@@ -2,17 +2,21 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const Characters = () => {
+const Characters = (limit, setLimit, skip, setSkip, name, setName) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
-  // console.log(data.characterss);
+  // console.log(data.characters);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/characters");
+        const response = await axios.get(
+          `http://localhost:4000/characters?limit=${limit}`
+        );
         // console.log(response.data);
+
+        // &skip=${skip}&name=${name}
 
         setData(response.data);
         setIsLoading(false);
@@ -27,6 +31,15 @@ const Characters = () => {
     <p>Loading…</p>
   ) : (
     <section className="container">
+      {/* <input
+        type="search"
+        value={search}
+        placeholder="Rechercher un personnage"
+        onChange={(event) => {
+          event.preventDefault();
+        }}
+      /> */}
+
       <div className="all-character">
         {data.results.map((characters) => {
           // je crée une variable picture
