@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 
 const CharactersId = () => {
   const [data, setData] = useState();
-  const [data2, setData2] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
@@ -45,16 +44,20 @@ const CharactersId = () => {
               <p className="details-name">{data.name}</p>
               <p className="details-description">{data.description}</p>
             </div>
-
-            {/* carrousel */}
           </section>
         </div>
       </div>
 
       <div className="container">
+        {data.comics[0] && (
+          <h1 className="presence">
+            Retrouve <span>{data.name}</span> dans ces comics
+          </h1>
+        )}
+
+        {/* carrousel */}
         <div className="carousel">
           {data.comics.map((comic, index) => {
-            // console.log("ok", comic);
             return (
               <div key={index} className="comics-present">
                 <div>
