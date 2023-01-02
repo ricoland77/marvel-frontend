@@ -7,7 +7,6 @@ const CharactersId = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
-  // console.log(id);
 
   useEffect(() => {
     const fetchDataComics = async () => {
@@ -17,13 +16,11 @@ const CharactersId = () => {
         );
 
         setData(response.data);
-        // console.log(response.data);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
       }
     };
-    // fetchDataChar();
     fetchDataComics();
   }, [id]);
 

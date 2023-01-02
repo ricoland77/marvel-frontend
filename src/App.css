@@ -103,7 +103,6 @@ body {
 .character {
   width: 150px;
   position: relative;
-  /* border: solid 2px yellow; */
 }
 
 .character img {
@@ -163,7 +162,6 @@ body {
 
 .comics {
   width: 150px;
-  /* border: solid 2px yellow; */
 }
 
 .comics img {
@@ -188,7 +186,6 @@ body {
 .character-id {
   width: 300px;
   height: 300px;
-  /* border: solid 2px yellow; */
 }
 
 .character-id img {
@@ -210,7 +207,6 @@ body {
 }
 
 .carousel {
-  /* border: solid 2px green; */
   display: flex;
   align-items: center;
   gap: 10px;
@@ -226,7 +222,6 @@ body {
 
 /* .recherche */
 .search {
-  /* border: solid 2px green; */
   display: flex;
   justify-content: center;
   gap: 50px;
@@ -252,7 +247,6 @@ body {
 /* page favoris */
 
 .favoris-loader {
-  /* border: solid 1px red; */
   height: 75vh;
   display: flex;
   flex-direction: column;

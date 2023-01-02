@@ -18,7 +18,6 @@ const Comics = () => {
         const response = await axios.get(
           `http://localhost:4000/comics?limit=${limit}&skip=${skip}&title=${title}`
         );
-        // console.log(response.data);
 
         setData(response.data);
         setIsLoading(false);

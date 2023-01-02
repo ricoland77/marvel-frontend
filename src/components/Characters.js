@@ -18,15 +18,12 @@ const Characters = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
-  // console.log(data.characters);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
           `http://localhost:4000/characters?limit=${limit}&skip=${skip}&name=${name}`
         );
-        // console.log(response.data);
 
         setData(response.data);
         setIsLoading(false);
