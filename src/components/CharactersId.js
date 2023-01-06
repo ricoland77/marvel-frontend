@@ -12,7 +12,7 @@ const CharactersId = () => {
     const fetchDataComics = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/character/${id}`
+          `http://backend-marvel:8080/character/${id}`
         );
 
         setData(response.data);
