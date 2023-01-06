@@ -16,7 +16,7 @@ const Comics = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://site--backend-marvel--dk8jf2pny52x.code.run/comics?limit=${limit}&skip=${skip}&title=${title}`
+          `http://backend-marvel:8080/comics?limit=${limit}&skip=${skip}&title=${title}`
         );
 
         setData(response.data);
