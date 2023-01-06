@@ -16,7 +16,7 @@ const Comics = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://rococo-pixie-9fde54.netlify.app/comics?limit=${limit}&skip=${skip}&title=${title}`
+          `https://aquamarine-starship-6bf2bb.netlify.app/comics?limit=${limit}&skip=${skip}&title=${title}`
         );
 
         setData(response.data);

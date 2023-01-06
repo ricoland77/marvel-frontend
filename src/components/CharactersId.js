@@ -12,7 +12,7 @@ const CharactersId = () => {
     const fetchDataComics = async () => {
       try {
         const response = await axios.get(
-          `https://rococo-pixie-9fde54.netlify.app/character/${id}`
+          `https://aquamarine-starship-6bf2bb.netlify.app/character/${id}`
         );
 
         setData(response.data);
