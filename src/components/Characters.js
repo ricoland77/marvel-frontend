@@ -22,7 +22,7 @@ const Characters = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://aquamarine-starship-6bf2bb.netlify.app/characters?limit=${limit}&skip=${skip}&name=${name}`
+          `https://backend-marvel-ricoland.netlify.app/characters?limit=${limit}&skip=${skip}&name=${name}`
         );
 
         setData(response.data);
