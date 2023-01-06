@@ -12,7 +12,7 @@ const CharactersId = () => {
     const fetchDataComics = async () => {
       try {
         const response = await axios.get(
-          `https://frontend-marvel-ricoland.netlify.app/character/${id}`
+          `https://main--frontend-marvel-ricoland.netlify.app/character/${id}`
         );
 
         setData(response.data);
