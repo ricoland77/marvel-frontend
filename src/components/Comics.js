@@ -16,7 +16,7 @@ const Comics = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://main--frontend-marvel-ricoland.netlify.app/comics?limit=${limit}&skip=${skip}&title=${title}`
+          `https://frontend-marvel-ricoland.netlify.app/comics?limit=${limit}&skip=${skip}&title=${title}`
         );
 
         setData(response.data);
