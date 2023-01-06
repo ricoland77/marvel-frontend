@@ -12,7 +12,7 @@ const CharactersId = () => {
     const fetchDataComics = async () => {
       try {
         const response = await axios.get(
-          `http://backend-marvel:8080/character/${id}`
+          `https://gilded-sprinkles-d98cda.netlify.app/character/${id}`
         );
 
         setData(response.data);
