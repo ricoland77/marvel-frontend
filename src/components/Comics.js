@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 import loader from "../assets/images/tail-spin.svg";
+import gost from "../assets/images/comics-not-found.jpg";
 
 const Comics = () => {
   // Création de mes filtres de recherche
@@ -34,17 +35,17 @@ const Comics = () => {
     </div>
   ) : (
     <section className="container">
-      <div>
-        <form className="search">
-          <input
-            className="input-search"
-            type="search"
-            value={title}
-            placeholder="Rechercher un comics"
-            onChange={(event) => {
-              setTitle(event.target.value);
-            }}
-          />
+      <form className="search">
+        <input
+          className="input-search"
+          type="search"
+          value={title}
+          placeholder="Rechercher un comics"
+          onChange={(event) => {
+            setTitle(event.target.value);
+          }}
+        />
+        <div className="filters">
           <input
             className="input-search-number"
             type="text"
@@ -63,21 +64,25 @@ const Comics = () => {
               setSkip(event.target.value);
             }}
           />
-        </form>
-      </div>
+        </div>
+      </form>
 
       <div className="all-comics">
         {data.results.map((comics) => {
+          const picture = `${comics.thumbnail.path}.${comics.thumbnail.extension}`;
+
+          const pictureGost =
+            "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg";
+
           return (
             <div className="comics" key={comics._id}>
-              <img
-                src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
-                alt="comics"
-              />
-              <p className="comics-name">{comics.title}</p>
-              {comics.description && (
-                <p className="comics-description">{comics.description}</p>
+              {picture === pictureGost ? (
+                <img src={gost} alt="Marvel Heros" />
+              ) : (
+                <img src={picture} alt="Character" />
               )}
+
+              <p className="comics-name">{comics.title}</p>
             </div>
           );
         })}

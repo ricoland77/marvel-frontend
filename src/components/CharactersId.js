@@ -2,11 +2,19 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+import gost from "../assets/images/gost.jpg";
+
 const CharactersId = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
+
+  const pictureGost =
+    "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg";
+
+  const secondPictureGost =
+    "http://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708.gif";
 
   useEffect(() => {
     const fetchDataComics = async () => {
@@ -32,10 +40,17 @@ const CharactersId = () => {
         <div className="box-center">
           <section className="details">
             <div className="character-id">
-              <img
-                src={`${data.thumbnail.path}.${data.thumbnail.extension}`}
-                alt=""
-              />
+              {`${data.thumbnail.path}.${data.thumbnail.extension}` ===
+                pictureGost ||
+              `${data.thumbnail.path}.${data.thumbnail.extension}` ===
+                secondPictureGost ? (
+                <img src={gost} alt="Marvel Heros" />
+              ) : (
+                <img
+                  src={`${data.thumbnail.path}.${data.thumbnail.extension}`}
+                  alt="Character"
+                />
+              )}
             </div>
             <div>
               <p className="details-name">{data.name}</p>

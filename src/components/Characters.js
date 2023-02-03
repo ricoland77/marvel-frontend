@@ -8,6 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import loader from "../assets/images/tail-spin.svg";
+import gost from "../assets/images/gost.jpg";
 
 const Characters = () => {
   // Création de mes filtres de recherche
@@ -40,22 +41,22 @@ const Characters = () => {
     </div>
   ) : (
     <section className="container">
-      <div>
-        <form className="search">
-          <input
-            className="input-search"
-            type="search"
-            value={name}
-            placeholder="Rechercher un personnage"
-            onChange={(event) => {
-              setName(event.target.value);
-            }}
-          />
+      <form className="search">
+        <input
+          className="input-search"
+          type="search"
+          value={name}
+          placeholder="Rechercher un personnage"
+          onChange={(event) => {
+            setName(event.target.value);
+          }}
+        />
+        <div className="filters">
           <input
             className="input-search-number"
             type="text"
             value={limit}
-            placeholder="pers / page"
+            placeholder="pers. / page"
             onChange={(event) => {
               setLimit(event.target.value);
             }}
@@ -65,60 +66,66 @@ const Characters = () => {
             className="input-search-number"
             type="text"
             value={skip}
-            placeholder="skip"
+            placeholder="ex. : 50 prochains"
             onChange={(event) => {
               setSkip(event.target.value);
             }}
           />
-        </form>
-      </div>
-
+        </div>
+      </form>
       <div className="all-character">
         {data.results.map((characters) => {
           // je crée une variable picture
           const picture = `${characters.thumbnail.path}.${characters.thumbnail.extension}`;
 
+          const pictureGost =
+            "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg";
+
+          const secondPictureGost =
+            "http://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708.gif";
+
           return (
-            <div className="character" key={characters._id}>
-              <Link to={`/character/${characters._id}`}>
-                <img src={picture} alt="Character" />
-              </Link>
-              <div className="favoris">
-                <p className="character-name">{characters.name}</p>
-                <div className="heart">
-                  <i
-                    class="fa-regular fa-heart"
-                    onClick={() => {
-                      toast.error(
-                        "Désolé, pour le moment cette fonctionnalité ne te permet pas d'ajouter un personnage dans les favoris !"
-                      );
-                      Cookies.set("favoris", characters._id, { expires: 17 });
-                    }}
-                  ></i>
-                  <ToastContainer
-                    position="top-center"
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="dark"
-                  />
+            <div className="fix-zoom">
+              <div className="character" key={characters._id}>
+                <Link to={`/character/${characters._id}`}>
+                  {picture === pictureGost || picture === secondPictureGost ? (
+                    <img src={gost} alt="Marvel Heros" />
+                  ) : (
+                    <img src={picture} alt="Character" />
+                  )}
+                </Link>
+                <div className="favoris">
+                  <p className="character-name">{characters.name}</p>
+                  <div className="heart">
+                    <i
+                      class="fa-regular fa-heart"
+                      onClick={() => {
+                        toast.error(
+                          "Désolé, pour le moment cette fonctionnalité ne te permet pas d'ajouter un personnage dans les favoris !"
+                        );
+                        Cookies.set("favoris", characters._id, { expires: 17 });
+                      }}
+                    ></i>
+                    <ToastContainer
+                      position="top-center"
+                      autoClose={5000}
+                      hideProgressBar={false}
+                      newestOnTop={false}
+                      closeOnClick
+                      rtl={false}
+                      pauseOnFocusLoss
+                      draggable
+                      pauseOnHover
+                      theme="dark"
+                    />
+                  </div>
                 </div>
               </div>
-
-              {characters.description && (
-                <p className="characters-description">
-                  {characters.description}
-                </p>
-              )}
             </div>
           );
         })}
       </div>
+      ;
     </section>
   );
 };
